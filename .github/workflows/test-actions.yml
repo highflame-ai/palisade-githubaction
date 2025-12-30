@@ -15,3 +15,10 @@ jobs:
         uses: ./
         with:
            args: "track-provenance ."
+
+      - name: Upload ML-BOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: ml-bom
+          path: ML-BOM.json
+
