@@ -14,11 +14,12 @@ jobs:
       - name: Run Palisade Action (local)
         uses: ./
         with:
-           args: "track-provenance ."
+               args: "track-provenance ./models"
 
-      - name: Upload ML-BOM
-        uses: actions/upload-artifact@v4
-        with:
-          name: ml-bom
-          path: ML-BOM.json
+      # - name: Upload ML-BOM
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: ml-bom
+      #     path: ML-BOM.json
+
 
