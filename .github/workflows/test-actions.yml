@@ -14,4 +14,4 @@ jobs:
       - name: Run Palisade Action (local)
         uses: ./
         with:
-          args: "--help"
+           args: "track-provenance ."
