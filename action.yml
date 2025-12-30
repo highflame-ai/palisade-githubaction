@@ -1,0 +1,13 @@
+name: "Palisade Security Scan"
+description: "Run Palisade ML security scans in GitHub Actions"
+author: "Highflame"
+
+inputs:
+  args:
+    description: "Arguments passed to the Palisade CLI"
+    required: false
+    default: "scan ."
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
