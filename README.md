@@ -53,6 +53,6 @@ jobs:
           args: "scan ."
 ```
 
-### Running different Palisade commands
+*Any Palisade command can be executed by passing the appropriate value to the args input.*
 
-Any Palisade command can be executed by passing the appropriate value to the args input.
+**🏰 Built with ❤️ by [highflame](https://highflame.com) • Securing the LLM supply chain**
