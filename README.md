@@ -29,6 +29,8 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 
 ## Using Palisade in GitHub Action
 
+The Palisade GitHub Action enables you to run Palisade as part of your CI/CD workflows. It installs Palisade from PyPI inside a Docker container and runs the selected Palisade command on your repository, models, or artifacts.
+
 ```yaml
 name: Palisade Security Scan
 
@@ -50,3 +52,7 @@ jobs:
         with:
           args: "scan ."
 ```
+
+### Running different Palisade commands
+
+Any Palisade command can be executed by passing the appropriate value to the args input.
