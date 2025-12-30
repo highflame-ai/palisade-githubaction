@@ -15,6 +15,18 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 
 **15 Security Validators** provide multi-layered defense in depth (10 universal + 5 format-specific).
 
+## Commands
+
+| Command | Description |
+|--------|-------------|
+| `scan` | Scan model file(s) or directory for security threats (static analysis). |
+| `inference-scan` | Detect DoubleAgents-style backdoors through inference analysis. |
+| `verify-sigstore` | Verify Sigstore model transparency signature. |
+| `verify-slsa` | Verify SLSA provenance attestation. |
+| `track-provenance` | Generate comprehensive provenance tracking report. |
+| `policy` | Policy template management. |
+
+
 ## Using Palisade in GitHub Action
 
 ```yaml
