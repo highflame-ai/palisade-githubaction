@@ -14,12 +14,11 @@ jobs:
       - name: Run Palisade Action (local)
         uses: ./
         with:
-               args: "track-provenance ./models"
+             args: "scan . --format sarif --output palisade.sarif"
 
-      # - name: Upload ML-BOM
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: ml-bom
-      #     path: ML-BOM.json
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: palisade.sarif
 
 

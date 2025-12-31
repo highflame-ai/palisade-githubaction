@@ -57,6 +57,8 @@ jobs:
 
 ## Performance
 
+Palisade uses a native Rust core to handle massive models efficiently without OOM errors. It employs smart streaming and memory mapping to validate models larger than available RAM.
+
 | Model Size | Format | Scan Time | Memory Usage | Validators |
 |-----------|--------|-----------|--------------|------------|
 | 511.38 MB (250M) | SafeTensors | 3.7 s | 115.4 MB | 13 |
