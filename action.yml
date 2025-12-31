@@ -9,7 +9,13 @@ inputs:
     default: "scan ."
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.args }}
+  using: "composite"
+  steps:
+    - name: Install Palisade
+      run: pip install --no-cache-dir palisade
+      shell: bash
+
+    - name: Run Palisade
+      run: palisade ${{ inputs.args }}
+      shell: bash
+
