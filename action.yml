@@ -9,22 +9,23 @@ inputs:
     default: "scan ."
 
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.12"
+    # ---------- Linux & macOS ----------
+    - name: Run Palisade (Linux/macOS)
+      if: runner.os == 'Linux' || runner.os == 'macOS'
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install --no-cache-dir palisade
+        palisade ${{ inputs.args }}
 
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
-      shell: bash
-      
-    - name: Install Palisade
-      run: pip install --no-cache-dir palisade
-      shell: bash
-
-    - name: Run Palisade
-      run: palisade ${{ inputs.args }}
-      shell: bash
+    # ---------- Windows ----------
+    - name: Run Palisade (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        python -m pip install --upgrade pip
+        pip install palisade
+        palisade ${{ inputs.args }}
 
