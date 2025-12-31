@@ -55,4 +55,13 @@ jobs:
 
 *Any Palisade command can be executed by passing the appropriate value to the args input.*
 
+## Performance
+
+| Model Size | Format | Scan Time | Memory Usage | Validators |
+|-----------|--------|-----------|--------------|------------|
+| 511.38 MB (250M) | SafeTensors | 3.7 s | 115.4 MB | 13 |
+| 2.09 GB | SafeTensors | 14.3 s | 115.4 MB | 13 |
+| 3.8 GB (7B Q4_K_M) | GGUF | 29.4 s | 140 MB | 11 |
+| 9.4 GB | SafeTensors | 74.3 s | 119.4 MB | 13 |
+
 **🏰 Built with ❤️ by [highflame](https://highflame.com) • Securing the LLM supply chain**
