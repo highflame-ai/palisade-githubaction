@@ -50,7 +50,12 @@ jobs:
       - name: Run Palisade scan
         uses: highflame-ai/palisade-action@v1
         with:
-          args: "scan ."
+          args: "scan . --format sarif --output palisade.sarif"
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: palisade.sarif
 ```
 
 *Any Palisade command can be executed by passing the appropriate value to the args input.*
