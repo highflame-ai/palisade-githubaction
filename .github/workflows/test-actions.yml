@@ -1,6 +1,9 @@
 name: Test Palisade Action
 
 on:
+  push :
+    branches:
+      - devops-rev
   workflow_dispatch:
 
 permissions:
