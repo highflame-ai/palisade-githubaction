@@ -7,7 +7,6 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 ## ⭐ Key Capabilities
 
 - **Blocks Pickle RCE** - Completely prevents remote code execution via pickle files.
-- **Detects Behavioral Backdoors** - Identifies **DoubleAgents**, **BadAgent**, and fine-tuning attacks.
 - **Validates Model Integrity** - Verifies SafeTensors and GGUF formats against tampering.
 - **Verifies Supply Chain** - Enforces **Sigstore** signatures, **SLSA** provenance, and generates **ML-BOMs**.
 - **Catches Injection Attacks** - Prevents tokenizer hijacking, config manipulation, and metadata exploits.
@@ -20,7 +19,6 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 | Command | Description |
 |--------|-------------|
 | `scan` | Scan model file(s) or directory for security threats (static analysis). |
-| `inference-scan` | Detect DoubleAgents-style backdoors through inference analysis. |
 | `verify-sigstore` | Verify Sigstore model transparency signature. |
 | `verify-slsa` | Verify SLSA provenance attestation. |
 | `track-provenance` | Generate comprehensive provenance tracking report. |
@@ -70,5 +68,15 @@ Palisade uses a native Rust core to handle massive models efficiently without OO
 | 2.09 GB | SafeTensors | 14.3 s | 115.4 MB | 13 |
 | 3.8 GB (7B Q4_K_M) | GGUF | 29.4 s | 140 MB | 11 |
 | 9.4 GB | SafeTensors | 74.3 s | 119.4 MB | 13 |
+
+## Palisade Ecosystem
+
+- 🏆 **Palisade Leaderboard**  
+  Explore real-world scan performance, validator coverage, and benchmark results.  
+  👉 [SafeLLM-leaderboard](https://huggingface.co/spaces/highflame/SafeLLM-leaderboard)
+
+- 📘 **Palisade Documentation**  
+  Learn about validators, supported formats, CLI usage, and security guarantees.  
+  👉 [Highflame docs](https://docs.highflame.ai/documentation/palisade-model-scan/)
 
 **🏰 Built with ❤️ by [highflame](https://highflame.com) • Securing the LLM supply chain**
