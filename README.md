@@ -7,7 +7,6 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 ## ⭐ Key Capabilities
 
 - **Blocks Pickle RCE** - Completely prevents remote code execution via pickle files.
-- **Detects Behavioral Backdoors** - Identifies **DoubleAgents**, **BadAgent**, and fine-tuning attacks.
 - **Validates Model Integrity** - Verifies SafeTensors and GGUF formats against tampering.
 - **Verifies Supply Chain** - Enforces **Sigstore** signatures, **SLSA** provenance, and generates **ML-BOMs**.
 - **Catches Injection Attacks** - Prevents tokenizer hijacking, config manipulation, and metadata exploits.
