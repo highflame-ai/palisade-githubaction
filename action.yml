@@ -1,5 +1,5 @@
 name: "Palisade Security Scan"
-description: "Run Palisade ML security scans in GitHub Actions"
+description: "The Firewall for Your AI Models"
 author: "Highflame"
 
 inputs:
@@ -33,3 +33,8 @@ runs:
       shell: pwsh
       run: |
         Write-Error "❌ Palisade is not supported on Windows runners. Please use Linux or macOS."
+
+branding:
+  icon: "shield"
+  color: "red"
+

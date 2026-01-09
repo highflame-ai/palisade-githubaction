@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run Palisade scan
-        uses: highflame-ai/palisade-action@v1
+        uses: highflame-ai/palisade-githubaction@v1
         with:
           args: "scan . --format sarif --output palisade.sarif"
 
