@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run Palisade scan
-        uses: highflame-ai/palisade-githubaction@v1.0.0
+        uses: highflame-ai/palisade-githubaction@v1
         with:
           args: "scan . --format sarif --output palisade.sarif"
 
@@ -77,6 +77,6 @@ Palisade uses a native Rust core to handle massive models efficiently without OO
 
 - 📘 **Palisade Documentation**  
   Learn about validators, supported formats, CLI usage, and security guarantees.  
-  👉 [Highflame docs](https://docs.highflame.ai/documentation/red-teaming/model-supply-chain-scan))
+  👉 [Highflame docs](https://docs.highflame.ai/documentation/red-teaming/model-supply-chain-scan)
 
 **🏰 Built with ❤️ by [highflame](https://www.highflame.com) • Securing the LLM supply chain**
