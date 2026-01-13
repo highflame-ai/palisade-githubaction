@@ -77,6 +77,6 @@ Palisade uses a native Rust core to handle massive models efficiently without OO
 
 - 📘 **Palisade Documentation**  
   Learn about validators, supported formats, CLI usage, and security guarantees.  
-  👉 [Highflame docs](https://docs.highflame.ai/documentation/palisade-model-scan/)
+  👉 [Highflame docs](https://docs.highflame.ai/documentation/red-teaming/model-supply-chain-scan))
 
-**🏰 Built with ❤️ by [highflame](https://highflame.com) • Securing the LLM supply chain**
+**🏰 Built with ❤️ by [highflame](https://www.highflame.com) • Securing the LLM supply chain**
