@@ -1,0 +1,33 @@
+name: Publish Azure DevOps Extension
+
+on:
+  push:
+    branches:
+      - "devops-azure"
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install TFX CLI
+        run: npm install -g tfx-cli
+
+      - name: Install Dependencies
+        run: |
+          cd azure-devops-extension
+          npm install
+
+      - name: Publish Extension
+        run: |
+          cd azure-devops-extension
+          tfx extension publish \
+            --manifest-globs vss-extension.json \
+            --token ${{ secrets.AZURE_DEVOPS_TOKEN }}

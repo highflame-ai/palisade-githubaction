@@ -1,0 +1,27 @@
+{
+  "manifestVersion": 1,
+  "id": "palisade-security",
+  "name": "Palisade Security Scanner",
+  "version": "1.0.0",
+  "publisher": "getjavelin",
+  "targets": [
+    { "id": "Microsoft.VisualStudio.Services" }
+  ],
+  "description": "Run Palisade security scans in Azure DevOps pipelines",
+  "categories": ["Azure Pipelines"],
+  "files": [
+    { "path": "task" }
+  ],
+  "contributions": [
+    {
+      "id": "palisade-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "task"
+      }
+    }
+  ]
+}
