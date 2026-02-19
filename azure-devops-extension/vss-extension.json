@@ -2,14 +2,21 @@
   "manifestVersion": 1,
   "id": "palisade-security",
   "name": "Palisade Security Scanner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "getjavelin",
-  "description": "Run Palisade security scans in Azure DevOps pipelines",
+  "description": "The Firewall for Your AI Models",
+  "galleryFlags": [
+    "Public"
+  ],
   "content": {
   "details": {
     "path": "README.md"
   }
 },
+  "icons": {
+        "default": "images/highfame_logo.jpeg"
+    },
+
   "targets": [
     { "id": "Microsoft.VisualStudio.Services" }
   ],
