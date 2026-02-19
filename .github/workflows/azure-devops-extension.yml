@@ -1,9 +1,6 @@
 name: Publish Azure DevOps Extension
 
 on:
-  push:
-    branches:
-      - "devops-azure"
   workflow_dispatch:
 jobs:
   publish:

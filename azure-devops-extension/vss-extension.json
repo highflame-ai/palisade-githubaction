@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "palisade-security",
   "name": "Palisade Security Scanner",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "publisher": "getjavelin",
   "description": "The Firewall for Your AI Models",
   "galleryFlags": [
