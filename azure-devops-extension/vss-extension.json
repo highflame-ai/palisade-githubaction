@@ -5,9 +5,11 @@
   "version": "1.0.1",
   "publisher": "getjavelin",
   "description": "Run Palisade security scans in Azure DevOps pipelines",
-   "overview": {
-    "path": "azure-devops-extension/README.md"
-  },
+  "content": {
+  "details": {
+    "path": "readme.md"
+  }
+},
   "targets": [
     { "id": "Microsoft.VisualStudio.Services" }
   ],
