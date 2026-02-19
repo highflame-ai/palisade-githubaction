@@ -20,9 +20,13 @@
       "required": true
     }
   ],
-  "execution": {
-    "Node": {
-      "target": "index.js"
-    }
+"execution": {
+  "Node20": {
+    "target": "index.js"
+  },
+  "Node24": {
+    "target": "index.js"
   }
+}
+
 }
