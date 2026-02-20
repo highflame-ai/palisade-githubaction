@@ -1,20 +1,26 @@
 const tl = require('azure-pipelines-task-lib/task');
-const cp = require('child_process');
 
 async function run() {
     try {
-        const args = tl.getInput('args', true);
+        const argsInput = tl.getInput('args', true);
 
-        console.log("Installing Palisade from PyPI...");
-        cp.execSync('python -m pip install --upgrade pip', { stdio: 'inherit' });
-        cp.execSync('pip install palisade', { stdio: 'inherit' });
+        if (!argsInput) {
+            throw new Error("No arguments provided.");
+        }
 
-        const command = `palisade ${args}`;
+        // Split arguments safely
+        const args = argsInput.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
 
-        console.log(`Running command: ${command}`);
-        cp.execSync(command, { stdio: 'inherit' });
+        console.log("Upgrading pip...");
+        await tl.exec('python', ['-m', 'pip', 'install', '--upgrade', 'pip']);
 
-        console.log("Palisade scan completed successfully.");
+        console.log("Installing Palisade...");
+        await tl.exec('pip', ['install', 'palisade']);
+
+        console.log("Running Palisade...");
+        await tl.exec('palisade', args);
+
+        tl.setResult(tl.TaskResult.Succeeded, "Palisade scan completed successfully.");
 
     } catch (err) {
         tl.setResult(tl.TaskResult.Failed, err.message);
