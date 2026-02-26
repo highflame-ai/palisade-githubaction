@@ -30,8 +30,7 @@
     "vulnerability"
   ],
 "files": [
-  { "path": "task" },
-  { "path": "images" }
+  { "path": "task" }
 ],
   "contributions": [
     {
