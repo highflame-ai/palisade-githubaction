@@ -1,0 +1,102 @@
+name: Publish Azure DevOps Extension
+
+on:
+ release:
+    types:
+      - published
+
+env:
+  RELEASE_BRANCH: "main"
+  REGEX_PATTERN: "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+  RELEASE_NAME: ${{ github.event.release.name }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Release Branch
+        id: validate_branch
+        shell: bash
+        run: |-
+          export TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
+          export TAG_BRANCH=$(git branch -r --contains ${TAG_COMMIT} | grep -v HEAD | head -n 1 | sed 's/origin\///' | sed 's/^[ \t]*//')
+          if [[ "${TAG_BRANCH}" == "${{ env.RELEASE_BRANCH }}" ]] ; then
+            echo "Valid Branch for Release : ${TAG_BRANCH}"
+            echo "enable_branch_build=true" >> ${GITHUB_OUTPUT}
+          else
+            echo "Invalid Branch for Release : ${TAG_BRANCH}"
+            echo "enable_branch_build=false" >> ${GITHUB_OUTPUT}
+            exit 1
+          fi
+       
+      - name: Validate Release Tag
+        if: ${{ steps.validate_branch.outputs.enable_branch_build == 'true' }}
+        id: validate_tag
+        shell: bash
+        run: |-
+          if [[ "${{ env.RELEASE_NAME }}" =~ ${{ env.REGEX_PATTERN }} ]] ; then
+            echo "Valid version format: ${{ env.RELEASE_NAME }}"
+            echo "enable_tag_build=true" >> ${GITHUB_OUTPUT}
+          else
+            echo "Invalid version format: ${{ env.RELEASE_NAME }}"
+            echo "enable_tag_build=false" >> ${GITHUB_OUTPUT}
+            exit 1
+          fi
+
+      - name: Sync Version From Release Name
+        if: ${{ steps.validate_tag.outputs.enable_tag_build == 'true' }}
+        shell: bash
+        run: |-
+          VERSION=${{ env.RELEASE_NAME }}
+          VERSION=${VERSION#v}
+
+          echo "Using release version: $VERSION"
+
+          # Update extension version
+          node -e "
+          const fs=require('fs');
+          let ext=require('./azure-devops-extension/vss-extension.json');
+          ext.version='$VERSION';
+          fs.writeFileSync('./azure-devops-extension/vss-extension.json', JSON.stringify(ext,null,2));
+          "
+
+          # Update task version
+          node -e "
+          const fs=require('fs');
+          let task=require('./azure-devops-extension/task/task.json');
+          const parts='$VERSION'.split('.');
+          task.version.Major=parseInt(parts[0]);
+          task.version.Minor=parseInt(parts[1]);
+          task.version.Patch=parseInt(parts[2]);
+          fs.writeFileSync('./azure-devops-extension/task/task.json', JSON.stringify(task,null,2));
+          "
+
+          echo "Version synced successfully"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install TFX CLI
+        run: npm install -g tfx-cli
+
+      - name: Install Root Dependencies
+        run: |-
+          cd azure-devops-extension
+          npm install
+
+      - name: Install Task Dependencies
+        run: |-
+          cd azure-devops-extension/task
+          npm install
+
+      - name: Publish Extension
+        run: |-
+          cd azure-devops-extension
+          tfx extension publish \
+            --manifest-globs vss-extension.json \
+            --token ${{ secrets.AZURE_DEVOPS_TOKEN }} 

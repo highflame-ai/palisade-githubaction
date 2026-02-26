@@ -1,0 +1,33 @@
+{
+  "id": "443fa921-3883-4fe6-9ba3-1c3feef55481",
+  "name": "Palisade",
+  "friendlyName": "Palisade Security Scan",
+  "description": "Runs Palisade security scanner",
+  "category": "Utility",
+  "author": "Palisade",
+  "icon": "images/highflameai-logo.png",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 7
+  },
+  "instanceNameFormat": "Run Palisade Scan",
+  "inputs": [
+    {
+      "name": "args",
+      "type": "string",
+      "label": "Palisade CLI Arguments",
+      "defaultValue": "scan .",
+      "required": true
+    }
+  ],
+"execution": {
+  "Node20": {
+    "target": "index.js"
+  },
+  "Node24": {
+    "target": "index.js"
+  }
+}
+
+}
