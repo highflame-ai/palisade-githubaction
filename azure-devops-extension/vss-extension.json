@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "palisade-security",
   "name": "Palisade Security Scanner",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "publisher": "getjavelin",
   "description": "The Firewall for Your AI Models",
   "galleryFlags": [
@@ -14,7 +14,7 @@
   }
 },
   "icons": {
-        "default": "images/highflameai-logo.jpeg"
+        "default": "images/highflameai-logo.png"
     },
 
   "targets": [
