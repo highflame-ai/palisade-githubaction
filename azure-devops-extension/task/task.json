@@ -5,10 +5,11 @@
   "description": "Runs Palisade security scanner",
   "category": "Utility",
   "author": "Palisade",
+  "icon": "icon.png",
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 5
+    "Patch": 6
   },
   "instanceNameFormat": "Run Palisade Scan",
   "inputs": [

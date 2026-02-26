@@ -24,6 +24,35 @@ Powered by a **high-performance Rust core**, Palisade delivers maximum speed and
 | `track-provenance` | Generate comprehensive provenance tracking report. |
 | `policy` | Policy template management. |
 
+## Using Palisade in Azure DevOps
+
+Palisade for Azure DevOps enables you to integrate Palisade security scanning directly into your CI/CD pipelines.. It installs Palisade from PyPI inside a Docker container and runs the selected Palisade command on your repository, models, or artifacts.
+
+```yaml
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+
+# Run Palisade Security Scan
+- task: Palisade@1
+  inputs:
+    args: 'scan . --format sarif --output $(Build.SourcesDirectory)/palisade.sarif'
+  displayName: Run Palisade Security Scan
+
+# Publish SARIF Report as Pipeline Artifact
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)/palisade.sarif'
+    artifact: 'Palisade-SARIF-Report'
+    publishLocation: 'pipeline'
+  displayName: Publish SARIF Report
+```
+*Any Palisade command can be executed by passing the appropriate value to the args input.*
 
 ## Performance
 
