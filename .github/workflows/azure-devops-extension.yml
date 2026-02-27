@@ -11,11 +11,16 @@ env:
   RELEASE_NAME: ${{ github.event.release.name }}
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
-
+ Highflame-validate:
+    permissions:
+      contents: 'read'
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Validate Release Branch
         id: validate_branch
@@ -45,6 +50,17 @@ jobs:
             echo "enable_tag_build=false" >> ${GITHUB_OUTPUT}
             exit 1
           fi
+
+ Highflame-publish:
+    needs:
+      - Highflame-validate
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Sync Version From Release Name
         if: ${{ steps.validate_tag.outputs.enable_tag_build == 'true' }}
