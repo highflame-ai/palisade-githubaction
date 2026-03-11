@@ -63,7 +63,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Sync Version From Release Name
-        if: ${{ steps.validate_tag.outputs.enable_tag_build == 'true' }}
         shell: bash
         run: |-
           VERSION=${{ env.RELEASE_NAME }}
